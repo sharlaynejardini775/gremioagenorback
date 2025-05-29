@@ -12,7 +12,7 @@ async function listarAlunosPorAno(ano) {
   const pool = await poolPromise;
   const result = await pool.request()
     .input('ano', sql.VarChar, ano)
-    .query('SELECT * FROM Aluno WHERE ano = @ano');
+    .query('SELECT * FROM Aluno WHERE ano = @ano ORDER BY nome');
   return result.recordset;
 }
 
